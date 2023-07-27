@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1> Listado de paises </h1>
+        {% if username %}
+        <h2> Bienvenido, {{ username}} </h2>
+        {%else%}
+        <h2>Usuario invitado </h2>
+        {%endif%}
+        {{ paises }}
+        <table class="table  table-bordered">
+            <thead> 
+                <tr>
+                    <th>Nombre</th>
+                    <th>Poblacion</th>
+                    <th>Superficie</th>
+                    <th>NumeroPaises</th>
+                    <th>densidad</th>
+                    <th>Pais</th>
+                    <th>Capital</th>
+                    <th>Moneda</th>
+                </tr>
+            </thead>
+            <tbody> 
+                {%for continente in continentes%}
+                <tr>
+                    <td rowspan="{{continente.paises | length }}" >
+                        {{continente.nombre}}
+                    </td>
+                    <td rowspan="{{continente.paises | length }}">
+                        {{continente.poblacion}}
+
+                    </td>
+                    <td rowspan="{{continente.paises | length }}">
+
+                        {{continente.superficie}}
+
+                    </td>
+                    <td rowspan="{{continente.paises | length }}">
+ 
+                        {{continente.numeropaises}}
+                    </td>
+                    <td rowspan="{{continente.paises | length }}">
+
+                        {{continente.densidad}}
+                    </td>
+                    {% for pais in continente.paises %}
+                    <td> 
+                        {{ pais.nom }}
+                     </td>
+                     <td> 
+                        {{ pais.cap }}
+                     </td>
+                     <td> 
+                        {{ pais.mon }}
+                     </td>
+                
+                </tr>
+                    {% endfor %}
+                
+                  {%endfor%}
+               
+            </tbody>
+            <tfoot> </tfoot>
+        </table>
+       
+        <script src="" async defer></script>
+    </body>
+</html>
